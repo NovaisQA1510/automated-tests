@@ -1,0 +1,16 @@
+{
+  "name": "sea-tecnologia-desafio-qa-automacao",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Suítes de automação (Cypress e Playwright) para o Desafio Analista de Teste — SEA Tecnologia",
+  "scripts": {
+    "test:cypress": "cypress run",
+    "test:cypress:open": "cypress open",
+    "test:playwright": "playwright test",
+    "test:playwright:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.0",
+    "@playwright/test": "^1.56.0"
+  }
+}
