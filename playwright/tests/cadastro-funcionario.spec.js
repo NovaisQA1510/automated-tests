@@ -60,9 +60,15 @@ test.describe('Cadastro de Funcionário', () => {
     // Após o save o servidor retorna 201 mas o cliente não refaz o GET da lista automaticamente.
     // Navegar de volta força um reload com dados atualizados do servidor.
     await visitarPaginaInicial(page);
+
+    // Verifica pelo nome (assertion principal): o funcionário deve aparecer na listagem.
+    await expect(funcionarioNaLista(page, nome)).toBeVisible();
+
+    // Verifica que o contador aumentou pelo menos 1 (pode subir mais se outros browsers
+    // rodarem em paralelo e cadastrarem funcionários simultaneamente).
     const textoDepois = await page.getByText(/Ativos \d+\/\d+/).textContent();
     const totalDepois = parseInt(textoDepois.match(/\/(\d+)/)[1]);
-    expect(totalDepois).toBe(totalAntes + 1);
+    expect(totalDepois).toBeGreaterThanOrEqual(totalAntes + 1);
   });
 
   test('não deve aceitar CPF com 11 caracteres não numéricos [referência: BUG-08]', async ({ page }) => {
