@@ -4,13 +4,14 @@
   "private": true,
   "description": "Suítes de automação (Cypress e Playwright) para o Desafio Analista de Teste — SEA Tecnologia",
   "scripts": {
-    "test:cypress": "cypress run",
-    "test:cypress:open": "cypress open",
+    "test:cypress": "env -u ELECTRON_RUN_AS_NODE cypress run",
+    "test:cypress:headed": "env -u ELECTRON_RUN_AS_NODE cypress run --headed --browser chrome",
+    "test:cypress:open": "env -u ELECTRON_RUN_AS_NODE cypress open",
     "test:playwright": "playwright test",
     "test:playwright:report": "playwright show-report"
   },
   "devDependencies": {
-    "cypress": "^13.6.0",
-    "@playwright/test": "^1.56.0"
+    "@playwright/test": "^1.56.0",
+    "cypress": "^13.17.0"
   }
 }
