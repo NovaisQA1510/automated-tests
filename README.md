@@ -27,9 +27,19 @@ O objetivo foi automatizar dois fluxos críticos de uma aplicação web de gest�
 
 Relatório HTML completo: [`playwright-report/index.html`](playwright-report/index.html)
 
-### Cypress
+### Cypress — última execução
 
-Execute `npm run test:cypress` para gerar vídeos em `cypress/videos/`. A execução requer acesso à rede onde a aplicação-alvo está disponível.
+| Spec | Testes | Passou | Falhou |
+|------|-------:|-------:|-------:|
+| cadastro-funcionario.cy.js | 3 | **3** | 0 |
+| pagina-inicial.cy.js | 6 | **6** | 0 |
+| **Total** | **9** | **9** | **0** |
+
+```
+9 passed (25s) — Chrome 127
+```
+
+Vídeos gerados automaticamente em `cypress/videos/` após cada execução.
 
 ---
 
@@ -156,9 +166,14 @@ npx playwright install   # baixa os navegadores (Chromium, Firefox, WebKit)
 # Headless (modo CI / linha de comando)
 npm run test:cypress
 
+# Com browser aberto (Chrome)
+npm run test:cypress:headed
+
 # Interface interativa (Cypress App)
 npm run test:cypress:open
 ```
+
+> **WSL2:** os scripts já incluem o workaround `env -u ELECTRON_RUN_AS_NODE` necessário para o Cypress funcionar corretamente no ambiente VS Code + WSL2.
 
 ### Playwright
 
@@ -205,7 +220,7 @@ O `playwright.config.js` está configurado para rodar em 3 engines:
 
 | Ferramenta | Versão |
 |---|---|
-| [Cypress](https://www.cypress.io/) | ^13.6.0 |
+| [Cypress](https://www.cypress.io/) | ^13.17.0 |
 | [Playwright](https://playwright.dev/) | ^1.56.0 |
 | Node.js | 18+ |
 
